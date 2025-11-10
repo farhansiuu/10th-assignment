@@ -1,0 +1,143 @@
+import React, { use, useContext } from 'react';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router';
+import { AuthContext } from './context/AuthContext';
+import { IoLogIn, IoLogOut } from 'react-icons/io5';
+import { FaGear, FaUser } from 'react-icons/fa6';
+
+
+
+const Navbar = () => {
+    const {user,signOutUser} = useContext(AuthContext)
+    const location = useLocation()
+    const navigate = useNavigate()
+
+     signOutUser()
+    .then(result=>{
+        console.log(result)
+        navigate(location.state || '/')
+
+    })
+    .catch(err=>{
+        console.log(err)
+    })
+
+
+    return (
+        
+            <div className="navbar bg-base-100 shadow-sm">
+  <div className="navbar-start">
+    <div className="dropdown">
+      <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
+      </div>
+      <ul
+        tabIndex="-1"
+        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+        <li>
+        <NavLink to='/home'>Home</NavLink>
+        </li>
+        <li>
+          <NavLink to='/pets-supplies'>Pets & Supplies</NavLink>
+        </li>
+          <li>
+          <NavLink to='/add-listening'>Add Listing</NavLink>
+        </li>
+         <li>
+          <NavLink to='/my-listening'>My Listings</NavLink>
+        </li>
+         <li>
+          <NavLink to='/my-orders'>My Orders</NavLink>
+        </li>
+      </ul>
+    </div>
+    <a className="btn btn-ghost text-xl">daisyUI</a>
+  </div>
+  <div className="navbar-center hidden lg:flex">
+    <ul className="menu menu-horizontal px-1">
+      <li>
+        <NavLink to='/home'>Home</NavLink>
+        </li>
+        <li>
+          <NavLink to='/pets-supplies'>Pets & Supplies</NavLink>
+        </li>
+        <li>
+          <NavLink to='/add-listening'>Add Listing</NavLink>
+        </li>
+         <li>
+          <NavLink to='/my-listening'>My Listings</NavLink>
+        </li>
+         <li>
+          <NavLink to='/my-orders'>My Orders</NavLink>
+        </li>
+        
+       
+    </ul>
+   
+  </div>
+  
+  <div className="navbar-end">
+    
+    {user ? (
+          <div className="dropdown dropdown-end z-50">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost btn-circle avatar"
+            >
+              <div className="w-9 border-2 border-gray-300 rounded-full">
+                <img
+                  alt="Tailwind CSS Navbar component"
+                  referrerPolicy="no-referrer"
+                  src={
+                    user.photoURL ||
+                    "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                  }
+                />
+              </div>
+            </div>
+            <ul
+              tabIndex="-1"
+              className="menu  menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow"
+            >
+              <div className=" pb-3 border-b border-b-gray-200">
+                <li className="text-sm font-bold">{user.displayName}</li>
+                <li className="text-xs">{user.email}</li>
+              </div>
+              <li className="mt-3">
+                <Link to={"/profile"}>
+                  <FaUser /> Profile
+                </Link>
+              </li>
+             
+              <li>
+                <a>
+                  {" "}
+                  <FaGear /> Settings
+                </a>
+              </li>
+              <li>
+                <button
+                  onClick={signOutUser}
+                  className="btn btn-xs text-left bg-linear-to-r from-cyan-500 to-cyan-500 text-white"
+                >
+                  <IoLogOut /> Logout
+                </button>
+              </li>
+            </ul>
+          </div>
+        ) : (
+          <Link
+            to={"/login"}
+            className="btn rounded-full border-gray-300  btn-sm bg-linear-to-r from-cyan-500 to-cyan-500 text-white"
+          >
+            {" "}
+            <IoLogIn /> Login
+          </Link>
+        )}
+  </div>
+</div>
+       
+    );
+};
+
+export default Navbar;
