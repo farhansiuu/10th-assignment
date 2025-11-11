@@ -15,7 +15,7 @@ export const router = createBrowserRouter([
     Component: Root,
     children: [
         {
-            path:'/home',
+            path:'/',
             index:true,
             Component: Home,
             loader: ()=>fetch('http://localhost:3000/recent-listing')

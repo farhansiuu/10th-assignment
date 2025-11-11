@@ -1,2 +1,14 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+
+
+
+.navbar .active {
+  color: rgb(107, 156, 156);
+  font-weight: bold;
+  border: 1px solid #CAC8C8FF;
+  border-radius: 20px;
+  background: rgb(243, 226, 226);
+  
+}

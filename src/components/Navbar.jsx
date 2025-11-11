@@ -1,7 +1,7 @@
 import React, { use } from 'react';
 import { Link, NavLink } from 'react-router';
 import { AuthContext } from './context/AuthContext';
-import { IoLogIn, IoLogOut } from 'react-icons/io5';
+import { IoLogIn, IoLogOut, IoPawOutline } from 'react-icons/io5';
 import { FaGear, FaUser } from 'react-icons/fa6';
 
 
@@ -22,7 +22,7 @@ const Navbar = () => {
         tabIndex="-1"
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
         <li>
-        <NavLink to='/home'>Home</NavLink>
+        <NavLink to='/'>Home</NavLink>
         </li>
         <li>
           <NavLink to='/pets-supplies'>Pets & Supplies</NavLink>
@@ -42,12 +42,12 @@ const Navbar = () => {
        )}
       </ul>
     </div>
-    <a className="btn btn-ghost text-xl">daisyUI</a>
+    <Link to='/' className="btn btn-ghost text-xl">Pa<IoPawOutline/>Mart</Link>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
       <li>
-        <NavLink to='/home'>Home</NavLink>
+        <NavLink to='/'>Home</NavLink>
         </li>
         <li>
           <NavLink to='/pets-supplies'>Pets & Supplies</NavLink>
