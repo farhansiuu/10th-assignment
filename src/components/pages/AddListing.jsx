@@ -1,17 +1,23 @@
-import React, { use } from 'react';
-import { AuthContext } from '../context/AuthContext';
+import React  from 'react';
+import Swal from 'sweetalert2';
+
 
 const AddListening = () => {
-    const {user} = use(AuthContext)
+    
     const handleAdd = (e)=>{
         e.preventDefault()
+        Swal.fire({
+  title: "Drag me!",
+  icon: "success",
+  draggable: true
+});
         const formData = {
             name: e.target.name.value ,
             category: e.target.category.value ,
             description: e.target.description.value,
             image: e.target.image.value ,
             date: new Date(),
-            // email: e.target 
+          
 
         }
 
@@ -36,7 +42,7 @@ const AddListening = () => {
       <div className="card-body p-6 relative">
         <h2 className="text-2xl font-bold text-center mb-6">Add New Model</h2>
         <form onSubmit={handleAdd} className="space-y-4">
-          {/* Name Field */}
+        
           <div>
             <label className="label font-medium">Name</label>
             <input
@@ -48,7 +54,6 @@ const AddListening = () => {
             />
           </div>
 
-          {/* Category Dropdown */}
           <div>
             <label className="label font-medium">Category</label>
             <select
@@ -93,7 +98,7 @@ const AddListening = () => {
             />
           </div>
 
-          {/* Description Textarea */}
+         
           <div>
             <label className="label font-medium">Description</label>
             <textarea
@@ -105,7 +110,7 @@ const AddListening = () => {
             ></textarea>
           </div>
 
-          {/* Thumbnail URL */}
+         
           <div>
             <label className="label font-medium">Image URL</label>
             <input
@@ -117,7 +122,7 @@ const AddListening = () => {
             />
           </div>
 
-          {/* Submit Button */}
+         
           <button
             type="submit"
             className="btn w-full text-white mt-6 rounded-full bg-linear-to-r from-cyan-300 to-cyan-600 hover:from-cyan-600 hover:to-cyan-700"

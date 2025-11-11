@@ -1,26 +1,48 @@
-import React, { use, useState } from 'react';
-import { useLoaderData } from 'react-router';
+import React, { use, useEffect, useState } from 'react';
+
 import { AuthContext } from './context/AuthContext';
+import { useParams } from 'react-router';
+import Swal from 'sweetalert2';
 
 const ListDetails = () => {
-    const details = useLoaderData()
+   const {id} = useParams()
     const {user} = use(AuthContext)
-    const [list,setList] = useState()
-    
-    console.log(details)
+    const [list,setList] = useState({})
+    console.log(list)
+   
+   useEffect(() => {
+    //  console.log(user.accessToken)
+    fetch(`http://localhost:3000/list-details/${id}`, {
+      headers: {
+        authorization: `Bearer ${user?.accessToken}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+        setList(data);
+       
+      });
+  }, [user,id]);
 
     const handleOrder = ()=>{
+        Swal.fire({
+  title: "Ordered Pet!",
+  icon: "success",
+  draggable: true
+});
         fetch('http://localhost:3000/myOrder',{
             method:'POST',
             headers:{
                 'Content-Type': 'application/json'
             },
-            body:JSON.stringify({...list,adopt_by:user.email})
+            body: JSON.stringify({...list, ordered_by:user.email})
             
         })
         .then(res=>res.json())
         .then(data=>{
-        console.log(data.result)
+        console.log(data)
+        
         })
         .catch(err=>{
             console.log(err)
@@ -36,12 +58,13 @@ const ListDetails = () => {
       alt="Movie" />
   </figure>
   <div className="card-body items-center">
-    <h2 className="card-title">{details.name}</h2>
-    <p>{details.description}</p>
+    <h2 className="card-title">{list?.name}</h2>
+    <p>{list?.description}</p>
     <p></p>
     <div className="card-actions justify-end">
       <button onClick={handleOrder} className="btn btn-primary">Adopt</button>
     </div>
+
   </div>
 </div>
     );

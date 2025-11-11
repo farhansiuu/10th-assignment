@@ -23,7 +23,7 @@ export const router = createBrowserRouter([
         {
             path:'/list-details/:id',
             Component: ListDetails,
-            loader:({params}) => fetch(`http://localhost:3000/list-details/${params.id}`)
+            // loader:({params}) => fetch(`http://localhost:3000/list-details/${params.id}`)
             
         },
         {

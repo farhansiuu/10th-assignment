@@ -1,5 +1,5 @@
-import React, { use, useContext } from 'react';
-import { Link, NavLink, useLocation, useNavigate } from 'react-router';
+import React, { use } from 'react';
+import { Link, NavLink } from 'react-router';
 import { AuthContext } from './context/AuthContext';
 import { IoLogIn, IoLogOut } from 'react-icons/io5';
 import { FaGear, FaUser } from 'react-icons/fa6';
@@ -7,20 +7,8 @@ import { FaGear, FaUser } from 'react-icons/fa6';
 
 
 const Navbar = () => {
-    const {user,signOutUser} = useContext(AuthContext)
-    const location = useLocation()
-    const navigate = useNavigate()
-
-     signOutUser()
-    .then(result=>{
-        console.log(result)
-        navigate(location.state || '/')
-
-    })
-    .catch(err=>{
-        console.log(err)
-    })
-
+    const {user,signOutUser} = use(AuthContext)
+   
 
     return (
         
@@ -39,7 +27,9 @@ const Navbar = () => {
         <li>
           <NavLink to='/pets-supplies'>Pets & Supplies</NavLink>
         </li>
-          <li>
+          {user &&(
+        <>
+        <li>
           <NavLink to='/add-listening'>Add Listing</NavLink>
         </li>
          <li>
@@ -48,6 +38,8 @@ const Navbar = () => {
          <li>
           <NavLink to='/my-orders'>My Orders</NavLink>
         </li>
+        </>
+       )}
       </ul>
     </div>
     <a className="btn btn-ghost text-xl">daisyUI</a>
@@ -60,6 +52,8 @@ const Navbar = () => {
         <li>
           <NavLink to='/pets-supplies'>Pets & Supplies</NavLink>
         </li>
+       {user &&(
+        <>
         <li>
           <NavLink to='/add-listening'>Add Listing</NavLink>
         </li>
@@ -69,23 +63,22 @@ const Navbar = () => {
          <li>
           <NavLink to='/my-orders'>My Orders</NavLink>
         </li>
+        </>
+       )}
         
        
     </ul>
+   
    
   </div>
   
   <div className="navbar-end">
     
     {user ? (
-          <div className="dropdown dropdown-end z-50">
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn btn-ghost btn-circle avatar"
-            >
-              <div className="w-9 border-2 border-gray-300 rounded-full">
-                <img
+        <div className="dropdown rounded-full">
+  <div tabIndex={0} role="" className="rounded-full">
+       <div className="w-9 border-2 border-gray-300 rounded-full">
+                <img className='rounded-full'
                   alt="Tailwind CSS Navbar component"
                   referrerPolicy="no-referrer"
                   src={
@@ -94,16 +87,14 @@ const Navbar = () => {
                   }
                 />
               </div>
-            </div>
-            <ul
-              tabIndex="-1"
-              className="menu  menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow"
-            >
-              <div className=" pb-3 border-b border-b-gray-200">
+             
+  </div>
+  <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+     <div className=" pb-3 border-b border-b-gray-200">
                 <li className="text-sm font-bold">{user.displayName}</li>
                 <li className="text-xs">{user.email}</li>
               </div>
-              <li className="mt-3">
+       <li className="mt-3">
                 <Link to={"/profile"}>
                   <FaUser /> Profile
                 </Link>
@@ -125,7 +116,10 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-        ) : (
+
+//   </ul>
+// </div>
+       ): (
           <Link
             to={"/login"}
             className="btn rounded-full border-gray-300  btn-sm bg-linear-to-r from-cyan-500 to-cyan-500 text-white"
