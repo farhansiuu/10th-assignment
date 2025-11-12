@@ -62,7 +62,7 @@ const ListDetails = () => {
     <p>{list?.description}</p>
     <p></p>
     <div className="card-actions justify-end">
-      <button onClick={handleOrder} className="btn btn-primary">Adopt</button>
+      <button onClick={handleOrder} className="btn text-white bg-cyan-700">Adopt</button>
     </div>
 
   </div>

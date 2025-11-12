@@ -76,7 +76,7 @@ const Login = () => {
         <p className="text-center">
           New to our website? Please  <Link
             className="text-blue-500 hover:text-blue-800"
-            to="/auth/register"
+            to="/register"
           >
              Register
           </Link>

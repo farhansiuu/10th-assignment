@@ -8,6 +8,8 @@ import MyOrders from "./pages/MyOrders";
 import ListDetails from "./ListDetails";
 import Login from "./Login/Login";
 import PrivateRoutes from "./context/PrivateRoutes";
+import Registration from "./Login/Reistration";
+
 
 export const router = createBrowserRouter([
   {
@@ -46,6 +48,10 @@ export const router = createBrowserRouter([
         {
             path:'/login',
             Component:Login
+        },
+        {
+            path: '/register',
+            Component: Registration
         }
     ]
   },

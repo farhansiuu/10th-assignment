@@ -6,7 +6,7 @@ import third from '../assets/portrait-cat-dog-looking-camera-260nw-1929069635.we
 const Banner = () => {
     return (
       <div className=''>
-         <div className="carousel w-full  rounded-2xl hover:shadow-2xl transition-all duration-300  bg-cyan-50 hover:-translate-y-2">
+         <div className="carousel w-full  rounded-2xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
   <div id="item1" className="carousel-item w-full flex flex-col md:flex-row justify-around items-center">
     <h1 className='text-2xl md:text-5xl font-bold'>“Find Your <br /> Furry Friend <br /> Today!”</h1>
     <img

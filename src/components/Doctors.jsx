@@ -7,7 +7,7 @@ import dr4 from '../assets/Adobe Express - file.png'
 const Doctors = () => {
     return (
      <div>
-        <h1 className='text-5xl font-bold bg-blue-300 p-3 rounded-2xl m-5 mt-10'>Meet Our Pet Heroes</h1>
+        <h1 className='text-5xl font-bold p-3 rounded-2xl m-5 mt-10'>Meet Our Pet Heroes</h1>
           <div className='m-10 grid grid-cols-1 md:grid-cols-4 gap-5'>
                   <div className='items-center gap-2'>
                       <div>

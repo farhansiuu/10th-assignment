@@ -38,7 +38,7 @@ const MyOrders = () => {
     <p><span className='font-semibold'>Location</span> {list.location}</p>
     <div className="card-actions justify-center">
     
-        <button className='btn bg-cyan-50'>Delete</button>
+        <button className='btn text-white bg-cyan-700'>Delete</button>
     </div>
     </div>
    

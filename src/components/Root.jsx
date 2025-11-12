@@ -5,14 +5,14 @@ import { Outlet } from 'react-router';
 
 const Root = () => {
     return (
-        <div className='bg-gray-100 p-4'>
+        <div className='p-4'>
           <div className="max-w-7xl mx-auto">
               <Navbar></Navbar>
           </div>
           <div className='mt-4'>
               <Outlet></Outlet>
           </div>
-           <div>
+           <div className='mt-5'>
              <Footer></Footer>
            </div>
         </div>

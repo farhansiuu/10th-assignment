@@ -3,7 +3,7 @@ import { IoPawOutline } from "react-icons/io5";
 
 const Footer = () => {
   return (
-    <footer className="footer footer-horizontal footer-center bg-cyan-200 p-10 rounded-2xl">
+    <footer className="footer footer-horizontal footer-center text-white bg-cyan-700 p-10 rounded-2xl">
       <aside>
        
         <p className="font-bold">

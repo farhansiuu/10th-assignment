@@ -18,7 +18,7 @@ const ListCard = ({list}) => {
     <p><span className='font-semibold'>Category:</span> {category}</p>
     <p><span className='font-semibold'>Location</span> {location}</p>
     <div className="card-actions justify-center">
-     <Link to={`/list-details/${_id}`}> <button className="btn bg-cyan-100">See Details</button></Link>
+     <Link to={`/list-details/${_id}`}> <button className="btn text-white bg-cyan-700">See Details</button></Link>
      
     </div>
    
