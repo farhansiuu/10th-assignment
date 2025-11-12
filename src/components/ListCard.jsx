@@ -8,7 +8,7 @@ const ListCard = ({list}) => {
     return (
        <div className="card bg-base-100 w-96 shadow-sm hover:shadow-2xl transition-all duration-300   hover:-translate-y-2">
   <figure>
-    <img
+    <img className='w-60 object-cover hover:scale-110 transition-transform duration-300'
       src={image}
       alt="Shoes" />
   </figure>

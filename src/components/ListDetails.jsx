@@ -53,8 +53,8 @@ const ListDetails = () => {
     return (
         <div className="card card-side bg-base-100 shadow-sm">
   <figure>
-    <img
-      src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
+    <img className='w-90'
+      src={list?.image}
       alt="Movie" />
   </figure>
   <div className="card-body items-center">

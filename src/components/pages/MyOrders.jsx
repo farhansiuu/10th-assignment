@@ -5,7 +5,7 @@ import ListCard from '../ListCard';
 
 const MyOrders = () => {
     const {user} = use(AuthContext)
-    const [list,setList] = useState([])
+    const [lists,setList] = useState([])
 
     useEffect(()=>{
         fetch(`http://localhost:3000/order?email=${user.email}`,{
@@ -25,17 +25,17 @@ const MyOrders = () => {
         <div>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-5'>
                 {
-                    list.map(list=> (<div className="card bg-base-100 w-96 shadow-sm hover:shadow-2xl transition-all duration-300   hover:-translate-y-2">
+                    lists.map(list=> (<div className="card bg-base-100 w-96 shadow-sm hover:shadow-2xl transition-all duration-300   hover:-translate-y-2">
   <figure>
     <img
-      src={list.image}
+      src={lists.image}
       alt="Shoes" />
   </figure>
   <div className="card-body items-center">
-    <h2 className="card-title">{list.name}</h2>
+    <h2 className="card-title">{lists.name}</h2>
     <p className='font-bold'>Description: <span className='text-blue-500'>{list.description}</span></p>
-    <p><span className='font-semibold'>Category:</span> {list.category}</p>
-    <p><span className='font-semibold'>Location</span> {list.location}</p>
+    <p><span className='font-semibold'>Category:</span> {lists.category}</p>
+    <p><span className='font-semibold'>Location</span> {lists.location}</p>
     <div className="card-actions justify-center">
     
         <button className='btn text-white bg-cyan-700'>Delete</button>
